@@ -3,7 +3,9 @@ package com.doeunkongden.finalprojectecommerce.data.model.api.response;
 import com.doeunkongden.finalprojectecommerce.data.model.api.ProductAttributes;
 import com.google.gson.annotations.SerializedName;
 
-public class ProductData {
+import java.io.Serializable;
+
+public class ProductData implements Serializable {
     //Going Through data
     @SerializedName("id")
     private int id;

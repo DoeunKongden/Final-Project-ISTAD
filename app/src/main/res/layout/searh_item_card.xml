@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="340dp"
     android:layout_height="wrap_content">
 
 
@@ -19,14 +19,14 @@
 
     <TextView
         android:maxLines="1"
-        android:maxLength="20"
-        android:id="@+id/product_title"
+        android:maxLength="10"
+        android:id="@+id/et_update_ttile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:text="Product Title"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/product_search_image"
         app:layout_constraintTop_toTopOf="@+id/product_search_image" />
@@ -39,17 +39,26 @@
         android:text="38$"
         android:textColor="@color/black"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/product_title"
-        app:layout_constraintTop_toBottomOf="@+id/product_title" />
+        app:layout_constraintStart_toStartOf="@+id/et_update_ttile"
+        app:layout_constraintTop_toBottomOf="@+id/et_update_ttile" />
 
     <Button
         android:id="@+id/add_cart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
         android:text="Add To Cart"
         app:layout_constraintBottom_toBottomOf="@+id/product_search_image"
         app:layout_constraintStart_toStartOf="@+id/product_price"
         app:layout_constraintTop_toBottomOf="@+id/product_price"
         app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/options_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/options_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_update_ttile" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

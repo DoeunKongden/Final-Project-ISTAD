@@ -2,7 +2,9 @@ package com.doeunkongden.finalprojectecommerce.data.model.api.response;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ThumbnailResponse {
+import java.io.Serializable;
+
+public class ThumbnailResponse implements Serializable {
     @SerializedName("data")
     private ThumbnailData thumbnailData;
 

@@ -9,7 +9,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -27,13 +26,10 @@ import com.doeunkongden.finalprojectecommerce.MainActivity;
 import com.doeunkongden.finalprojectecommerce.R;
 import com.doeunkongden.finalprojectecommerce.data.model.api.ThumbnailAttributes;
 import com.doeunkongden.finalprojectecommerce.data.model.api.response.ProductPostResponse;
-import com.doeunkongden.finalprojectecommerce.ui.Home.HomeFragment;
 import com.doeunkongden.finalprojectecommerce.ui.ViewModel.ProductViewModel;
 import com.doeunkongden.finalprojectecommerce.utils.FilePath;
 
 import java.io.File;
-import java.io.LineNumberReader;
-import java.lang.reflect.Field;
 import java.util.List;
 
 public class AddProductActivity extends AppCompatActivity {
@@ -129,12 +125,12 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        addButton = findViewById(R.id.add_button);
+        addButton = findViewById(R.id.update_button);
         goHomeButton = findViewById(R.id.home_icon);
         cancelButton = findViewById(R.id.button_cancel);
-        thumbnailUpload = findViewById(R.id.thumbnailUpload);
+        thumbnailUpload = findViewById(R.id.iv_update_image);
         progressBar = findViewById(R.id.upload_progressBar);
-        product_title = findViewById(R.id.product_title);
+        product_title = findViewById(R.id.et_update_ttile);
         product_description = findViewById(R.id.product_descriptions);
     }
 

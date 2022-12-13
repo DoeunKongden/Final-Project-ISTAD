@@ -3,7 +3,9 @@ package com.doeunkongden.finalprojectecommerce.data.model.api;
 import com.doeunkongden.finalprojectecommerce.data.model.api.response.ThumbnailResponse;
 import com.google.gson.annotations.SerializedName;
 
-public class ProductAttributes {
+import java.io.Serializable;
+
+public class ProductAttributes implements Serializable {
     //Going through the json object of attributes
     @SerializedName("title")
     private String title;

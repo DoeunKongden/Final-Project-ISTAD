@@ -2,9 +2,10 @@ package com.doeunkongden.finalprojectecommerce.data.model.api.response;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ProductResponse {
+public class ProductResponse implements Serializable {
     @SerializedName("data")
     List<ProductData> dataList;
 

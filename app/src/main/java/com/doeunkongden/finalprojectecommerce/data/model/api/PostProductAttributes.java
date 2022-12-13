@@ -2,7 +2,9 @@ package com.doeunkongden.finalprojectecommerce.data.model.api;
 
 import com.google.gson.annotations.SerializedName;
 
-public class PostProductAttributes {
+import java.io.Serializable;
+
+public class PostProductAttributes implements Serializable {
 
     @SerializedName("title")
     private String title;

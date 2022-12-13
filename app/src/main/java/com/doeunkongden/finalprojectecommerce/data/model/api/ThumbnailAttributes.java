@@ -2,7 +2,9 @@ package com.doeunkongden.finalprojectecommerce.data.model.api;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ThumbnailAttributes {
+import java.io.Serializable;
+
+public class ThumbnailAttributes implements Serializable {
     @SerializedName("id")
     private int id;
 
