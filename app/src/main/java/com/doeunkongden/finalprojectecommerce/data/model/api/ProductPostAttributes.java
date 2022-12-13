@@ -2,10 +2,8 @@ package com.doeunkongden.finalprojectecommerce.data.model.api;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
-
-public class PostProductAttributes implements Serializable {
-
+public class ProductPostAttributes {
+    //Going through the json object of attributes
     @SerializedName("title")
     private String title;
 
@@ -30,7 +28,7 @@ public class PostProductAttributes implements Serializable {
     @SerializedName("quantity")
     private String quantity;
 
-    public PostProductAttributes(String title, String createdAt, String updatedAt, String publishedAt, String price, String rating, String description, String quantity) {
+    public ProductPostAttributes(String title, String createdAt, String updatedAt, String publishedAt, String price, String rating, String description, String quantity) {
         this.title = title;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -40,7 +38,6 @@ public class PostProductAttributes implements Serializable {
         this.description = description;
         this.quantity = quantity;
     }
-
 
     public String getTitle() {
         return title;
@@ -108,7 +105,7 @@ public class PostProductAttributes implements Serializable {
 
     @Override
     public String toString() {
-        return "PostProductAttributes{" +
+        return "ProductPostAttributes{" +
                 "title='" + title + '\'' +
                 ", createdAt='" + createdAt + '\'' +
                 ", updatedAt='" + updatedAt + '\'' +

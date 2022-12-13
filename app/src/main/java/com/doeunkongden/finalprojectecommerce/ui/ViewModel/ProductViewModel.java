@@ -1,17 +1,13 @@
 package com.doeunkongden.finalprojectecommerce.ui.ViewModel;
 
-import android.provider.ContactsContract;
-import android.widget.ImageButton;
-
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.doeunkongden.finalprojectecommerce.data.model.api.PostProductAttributes;
-import com.doeunkongden.finalprojectecommerce.data.model.api.ProductAttributes;
+import com.doeunkongden.finalprojectecommerce.data.model.api.ProductPostAttributes;
 import com.doeunkongden.finalprojectecommerce.data.model.api.ThumbnailAttributes;
 import com.doeunkongden.finalprojectecommerce.data.model.api.request.ProductRequest;
 import com.doeunkongden.finalprojectecommerce.data.model.api.request.ProductRequestData;
-import com.doeunkongden.finalprojectecommerce.data.model.api.response.ProductData;
+import com.doeunkongden.finalprojectecommerce.data.model.api.response.ProductPostData;
 import com.doeunkongden.finalprojectecommerce.data.model.api.response.ProductPostResponse;
 import com.doeunkongden.finalprojectecommerce.data.model.api.response.ProductResponse;
 import com.doeunkongden.finalprojectecommerce.data.remotes.repository.ProductRepository;
@@ -37,19 +33,19 @@ public class ProductViewModel extends ViewModel {
         productRepository = new ProductRepository("only init service");
     }
 
-    //posting new product method
-    public MutableLiveData<ProductPostResponse> postProduct(String imageId,String productTitle,String productDescription){
+    //Posting New Product
+    public MutableLiveData<ProductPostResponse> postProduct(String imageId, String product_title, String product_description){
 
         ProductRequest productRequest = new ProductRequest();
         ProductRequestData productRequestData = new ProductRequestData();
 
-        productRequestData.setTitle(productTitle);
-        productRequestData.setPrice("30");
-        productRequestData.setCategory("Shoes");
-        productRequestData.setQuantity("100");
-        productRequestData.setDescription(productDescription);
+        productRequestData.setTitle(product_title);
         productRequestData.setRating("3.8");
+        productRequestData.setDescription(product_description);
+        productRequestData.setQuantity("20");
+        productRequestData.setCategory("1");
         productRequestData.setThumbnail(imageId);
+        productRequestData.setPrice("100");
 
         return productRepository.postProduct(productRequest);
     }

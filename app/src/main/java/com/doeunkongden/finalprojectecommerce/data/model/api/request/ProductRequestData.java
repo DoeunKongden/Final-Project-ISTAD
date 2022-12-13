@@ -1,12 +1,10 @@
 package com.doeunkongden.finalprojectecommerce.data.model.api.request;
 
-import androidx.annotation.NonNull;
-
 import com.google.gson.annotations.SerializedName;
 
 public class ProductRequestData {
 
-    @SerializedName("title;")
+    @SerializedName("title")
     private String title;
 
     @SerializedName("rating")
@@ -27,18 +25,13 @@ public class ProductRequestData {
     @SerializedName("price")
     private String price;
 
-    public ProductRequestData(){
 
+    public String getCategory() {
+        return category;
     }
 
-    public ProductRequestData(String title, String rating, String description, String quantity, String category, String thumbnail, String price) {
-        this.title = title;
-        this.rating = rating;
-        this.description = description;
-        this.quantity = quantity;
+    public void setCategory(String category) {
         this.category = category;
-        this.thumbnail = thumbnail;
-        this.price = price;
     }
 
     public String getTitle() {
@@ -73,14 +66,6 @@ public class ProductRequestData {
         this.quantity = quantity;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     public String getThumbnail() {
         return thumbnail;
     }
@@ -97,7 +82,6 @@ public class ProductRequestData {
         this.price = price;
     }
 
-    @NonNull
     @Override
     public String toString() {
         return "ProductRequestData{" +
@@ -105,7 +89,6 @@ public class ProductRequestData {
                 ", rating='" + rating + '\'' +
                 ", description='" + description + '\'' +
                 ", quantity='" + quantity + '\'' +
-                ", category='" + category + '\'' +
                 ", thumbnail='" + thumbnail + '\'' +
                 ", price='" + price + '\'' +
                 '}';

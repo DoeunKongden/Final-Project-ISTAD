@@ -36,29 +36,27 @@ public class ProductRepository {
         productService = ServiceGenerator.createService(ProductService.class);
     }
 
-    //uploading new product
+    //Posting new Product
     public MutableLiveData<ProductPostResponse> postProduct(ProductRequest productRequest){
-        MutableLiveData<ProductPostResponse> postNewProductLiveData = new MutableLiveData<>();
+        MutableLiveData<ProductPostResponse> postProductResponse = new MutableLiveData<>();
 
-        //using the postProduct Service and Enqueing it
         productService.postProduct(productRequest).enqueue(new Callback<ProductPostResponse>() {
             @Override
-            //When we got the data from the body
             public void onResponse(Call<ProductPostResponse> call, Response<ProductPostResponse> response) {
-                Log.d("OnPostRes", "onResponse: " + response);
-                postNewProductLiveData.postValue(response.body());
+                Log.d("Post Response", "Post Product Response : " + response.body());
+                postProductResponse.postValue(response.body());
             }
 
             @Override
             public void onFailure(Call<ProductPostResponse> call, Throwable t) {
-                Log.d("Post Fail", "onFailure: " + t.getMessage());
-                postNewProductLiveData.postValue(null);
+                Log.d("Post Fail", "Post Product Fail Response : " + t.getMessage());
+                postProductResponse.postValue(null);
             }
         });
-        return postNewProductLiveData;
+
+
+        return postProductResponse;
     }
-
-
 
     //upload image method
     public MutableLiveData<List<ThumbnailAttributes>> uploadImage(File file){

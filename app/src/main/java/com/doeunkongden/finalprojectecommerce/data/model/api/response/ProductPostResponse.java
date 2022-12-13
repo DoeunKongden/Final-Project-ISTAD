@@ -1,23 +1,19 @@
 package com.doeunkongden.finalprojectecommerce.data.model.api.response;
 
-import com.doeunkongden.finalprojectecommerce.data.model.api.ProductAttributes;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 public class ProductPostResponse {
 
     @SerializedName("data")
-    ProductPostData productPostData;
+    List<ProductPostData> productPostData;
 
-
-    public ProductPostResponse(ProductPostData productPostData) {
-        this.productPostData = productPostData;
-    }
-
-    public ProductPostData getProductPostData() {
+    public List<ProductPostData> getProductPostData() {
         return productPostData;
     }
 
-    public void setProductPostData(ProductPostData productPostData) {
+    public void setProductPostData(List<ProductPostData> productPostData) {
         this.productPostData = productPostData;
     }
 

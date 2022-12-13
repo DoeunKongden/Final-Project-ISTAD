@@ -81,8 +81,7 @@ public class AddProductActivity extends AppCompatActivity {
             productViewModel.postProduct(String.valueOf(thumbnailId),product_title.getText().toString(),product_description.getText().toString()).observe(this, new Observer<ProductPostResponse>() {
                 @Override
                 public void onChanged(ProductPostResponse productPostResponse) {
-                    Toast.makeText(AddProductActivity.this, "Post Product Successfully", Toast.LENGTH_SHORT).show();
-                    Log.d("Product Post Response", "onChanged: prod res " + productPostResponse);
+                    Log.d("PPR", "onChanged: " + productPostResponse);
                 }
             });
         });

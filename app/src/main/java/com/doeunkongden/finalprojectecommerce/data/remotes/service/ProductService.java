@@ -32,7 +32,7 @@ public interface ProductService {
     Call<List<ThumbnailAttributes>> uploadImage(@Part MultipartBody.Part image);
 
 
-    //posting new product
+    //Posting new product
     @POST("e-commerce-products")
     Call<ProductPostResponse> postProduct(@Body ProductRequest productRequest);
 }
