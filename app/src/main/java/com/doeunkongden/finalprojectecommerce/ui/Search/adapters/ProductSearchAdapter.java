@@ -90,6 +90,7 @@ public class ProductSearchAdapter extends RecyclerView.Adapter<ProductSearchAdap
 
         @Override
         public void onClick(View view) {
+            ProductData productData = new ProductData();
             PopupMenu popupMenu = new PopupMenu(view.getContext(),view);
             popupMenu.inflate(R.menu.option_menu);
             Context context = view.getContext();
@@ -99,6 +100,7 @@ public class ProductSearchAdapter extends RecyclerView.Adapter<ProductSearchAdap
                     switch (menuItem.getItemId()) {
                         case R.id.update_product:
                             Intent intent = new Intent(view.getContext(), UpdateProductActivity.class);
+                            intent.putExtra("productId" , productData);
                             context.startActivity(intent);
                             break;
                         case R.id.delete_product:

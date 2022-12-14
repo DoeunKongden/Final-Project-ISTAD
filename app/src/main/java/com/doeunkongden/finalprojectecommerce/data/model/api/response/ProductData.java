@@ -13,11 +13,6 @@ public class ProductData implements Serializable {
     @SerializedName("attributes")
     private ProductAttributes productAttributes;
 
-    public ProductData(int id, ProductAttributes productAttributes) {
-        this.id = id;
-        this.productAttributes = productAttributes;
-    }
-
 
     public int getId() {
         return id;

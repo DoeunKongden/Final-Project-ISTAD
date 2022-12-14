@@ -2,6 +2,7 @@ package com.doeunkongden.finalprojectecommerce.data.remotes.service;
 
 import com.doeunkongden.finalprojectecommerce.data.model.api.ThumbnailAttributes;
 import com.doeunkongden.finalprojectecommerce.data.model.api.request.ProductRequest;
+import com.doeunkongden.finalprojectecommerce.data.model.api.response.ProductData;
 import com.doeunkongden.finalprojectecommerce.data.model.api.response.ProductPostResponse;
 import com.doeunkongden.finalprojectecommerce.data.model.api.response.ProductResponse;
 
@@ -13,7 +14,9 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ProductService {
@@ -35,4 +38,8 @@ public interface ProductService {
     //Posting new product
     @POST("e-commerce-products")
     Call<ProductPostResponse> postProduct(@Body ProductRequest productRequest);
+
+    //Update Product
+    @PUT("e-commerce-products/{id}")
+    Call<ProductData> updateProduct(@Path("id") int id);
 }

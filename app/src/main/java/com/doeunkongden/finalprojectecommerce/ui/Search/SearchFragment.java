@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.doeunkongden.finalprojectecommerce.MainActivity;
 import com.doeunkongden.finalprojectecommerce.R;
 import com.doeunkongden.finalprojectecommerce.data.model.api.ProductAttributes;
+import com.doeunkongden.finalprojectecommerce.data.model.api.response.ProductData;
 import com.doeunkongden.finalprojectecommerce.data.model.api.response.ProductResponse;
 import com.doeunkongden.finalprojectecommerce.ui.Search.adapters.ProductSearchAdapter;
 import com.doeunkongden.finalprojectecommerce.ui.Search.adapters.SearchProductClickedListener;
@@ -110,10 +111,18 @@ public class SearchFragment extends Fragment implements SearchProductClickedList
         searchItem_Recycler.setAdapter(productSearchAdapter);
     }
 
+
     @Override
     public void onSearhProductClick(ProductAttributes productAttributes) {
         Intent intent =  new Intent(getContext(), ProductDetailActivity.class);
         intent.putExtra("productAttributes",productAttributes);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onItemClick(ProductData productData) {
+        Intent intent = new Intent(getContext(),ProductDetailActivity.class);
+        intent.putExtra("productId" , productData);
         startActivity(intent);
     }
 }

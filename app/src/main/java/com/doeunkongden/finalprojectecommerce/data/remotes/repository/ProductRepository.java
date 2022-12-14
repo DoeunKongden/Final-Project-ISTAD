@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.doeunkongden.finalprojectecommerce.data.ServiceGenerator;
 import com.doeunkongden.finalprojectecommerce.data.model.api.ThumbnailAttributes;
 import com.doeunkongden.finalprojectecommerce.data.model.api.request.ProductRequest;
+import com.doeunkongden.finalprojectecommerce.data.model.api.response.ProductData;
 import com.doeunkongden.finalprojectecommerce.data.model.api.response.ProductPostResponse;
 import com.doeunkongden.finalprojectecommerce.data.model.api.response.ProductResponse;
 import com.doeunkongden.finalprojectecommerce.data.remotes.service.ProductService;
