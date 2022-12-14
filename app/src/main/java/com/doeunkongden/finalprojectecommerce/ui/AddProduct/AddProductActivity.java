@@ -45,15 +45,13 @@ public class AddProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
 
-
-        initView();
-        initEvent();
-
         //View Model Provider
         ViewModelProvider.Factory factory = (ViewModelProvider.Factory) new ViewModelProvider.NewInstanceFactory();
         productViewModel = new ViewModelProvider(this, factory).get(ProductViewModel.class);
         productViewModel.initRepo();
 
+        initView();
+        initEvent();
         //using request Permission Method
         requestPermission();
 
@@ -81,6 +79,7 @@ public class AddProductActivity extends AppCompatActivity {
             productViewModel.postProduct(String.valueOf(thumbnailId),product_title.getText().toString(),product_description.getText().toString()).observe(this, new Observer<ProductPostResponse>() {
                 @Override
                 public void onChanged(ProductPostResponse productPostResponse) {
+                    Toast.makeText(AddProductActivity.this, "Post SuccessFully", Toast.LENGTH_SHORT).show();
                     Log.d("PPR", "onChanged: " + productPostResponse);
                 }
             });

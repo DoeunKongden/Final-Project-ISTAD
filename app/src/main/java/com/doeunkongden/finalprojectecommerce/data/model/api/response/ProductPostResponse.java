@@ -7,20 +7,17 @@ import java.util.List;
 public class ProductPostResponse {
 
     @SerializedName("data")
-    List<ProductPostData> productPostData;
+    ProductData productData;
 
-    public List<ProductPostData> getProductPostData() {
-        return productPostData;
+    public ProductPostResponse(ProductData productData) {
+        this.productData = productData;
     }
 
-    public void setProductPostData(List<ProductPostData> productPostData) {
-        this.productPostData = productPostData;
+    public ProductData getProductData() {
+        return productData;
     }
 
-    @Override
-    public String toString() {
-        return "ProductPostResponse{" +
-                "productPostData=" + productPostData +
-                '}';
+    public void setProductData(ProductData productData) {
+        this.productData = productData;
     }
 }

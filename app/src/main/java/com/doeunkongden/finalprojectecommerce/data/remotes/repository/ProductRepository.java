@@ -54,7 +54,6 @@ public class ProductRepository {
             }
         });
 
-
         return postProductResponse;
     }
 
@@ -71,11 +70,13 @@ public class ProductRepository {
         productService.uploadImage(body).enqueue(new Callback<List<ThumbnailAttributes>>() {
             @Override
             public void onResponse(Call<List<ThumbnailAttributes>> call, Response<List<ThumbnailAttributes>> response) {
+                Log.d("res", "onResponse: " + response.body());
                 thumbnailLiveData.postValue(response.body());
             }
 
             @Override
             public void onFailure(Call<List<ThumbnailAttributes>> call, Throwable t) {
+                Log.d("fail res", "onFailure: " + t.getMessage());
                 thumbnailLiveData.postValue(null);
             }
         });

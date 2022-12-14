@@ -3,11 +3,9 @@ package com.doeunkongden.finalprojectecommerce.ui.ViewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.doeunkongden.finalprojectecommerce.data.model.api.ProductPostAttributes;
 import com.doeunkongden.finalprojectecommerce.data.model.api.ThumbnailAttributes;
 import com.doeunkongden.finalprojectecommerce.data.model.api.request.ProductRequest;
 import com.doeunkongden.finalprojectecommerce.data.model.api.request.ProductRequestData;
-import com.doeunkongden.finalprojectecommerce.data.model.api.response.ProductPostData;
 import com.doeunkongden.finalprojectecommerce.data.model.api.response.ProductPostResponse;
 import com.doeunkongden.finalprojectecommerce.data.model.api.response.ProductResponse;
 import com.doeunkongden.finalprojectecommerce.data.remotes.repository.ProductRepository;
