@@ -34,4 +34,12 @@ public class ProductData implements Serializable {
     public void setProductAttributes(ProductAttributes productAttributes) {
         this.productAttributes = productAttributes;
     }
+
+    @Override
+    public String toString() {
+        return "ProductData{" +
+                "id=" + id +
+                ", productAttributes=" + productAttributes +
+                '}';
+    }
 }

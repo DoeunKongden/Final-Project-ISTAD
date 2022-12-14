@@ -43,7 +43,7 @@ public class ProductRepository {
         productService.postProduct(productRequest).enqueue(new Callback<ProductPostResponse>() {
             @Override
             public void onResponse(Call<ProductPostResponse> call, Response<ProductPostResponse> response) {
-                Log.d("Post Response", "Post Product Response : " + response.body());
+                Log.d("Post Response", "Post Product Response : " + response);
                 postProductResponse.postValue(response.body());
             }
 

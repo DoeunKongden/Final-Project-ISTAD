@@ -45,6 +45,9 @@ public class ProductViewModel extends ViewModel {
         productRequestData.setThumbnail(imageId);
         productRequestData.setPrice("100");
 
+        productRequest.setProductRequestData(productRequestData);
+
+
         return productRepository.postProduct(productRequest);
     }
 

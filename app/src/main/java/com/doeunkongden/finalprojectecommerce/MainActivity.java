@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import com.doeunkongden.finalprojectecommerce.ui.Cart.CartFragment;
 import com.doeunkongden.finalprojectecommerce.ui.Home.HomeFragment;
 import com.doeunkongden.finalprojectecommerce.ui.Search.SearchFragment;
+import com.doeunkongden.finalprojectecommerce.ui.ViewModel.ProductViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -45,5 +46,11 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        recreate();
     }
 }

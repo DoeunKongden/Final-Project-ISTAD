@@ -81,6 +81,9 @@ public class AddProductActivity extends AppCompatActivity {
                 public void onChanged(ProductPostResponse productPostResponse) {
                     Toast.makeText(AddProductActivity.this, "Post SuccessFully", Toast.LENGTH_SHORT).show();
                     Log.d("PPR", "onChanged: " + productPostResponse);
+
+                    Intent intent = new Intent(AddProductActivity.this,MainActivity.class);
+                    startActivity(intent);
                 }
             });
         });

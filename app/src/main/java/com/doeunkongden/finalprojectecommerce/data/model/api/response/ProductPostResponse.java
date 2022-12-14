@@ -20,4 +20,11 @@ public class ProductPostResponse {
     public void setProductData(ProductData productData) {
         this.productData = productData;
     }
+
+    @Override
+    public String toString() {
+        return "ProductPostResponse{" +
+                "productData=" + productData +
+                '}';
+    }
 }
