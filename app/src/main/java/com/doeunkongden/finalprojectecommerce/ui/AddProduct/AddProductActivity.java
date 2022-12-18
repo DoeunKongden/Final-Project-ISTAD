@@ -36,7 +36,7 @@ public class AddProductActivity extends AppCompatActivity {
     ImageView goHomeButton, thumbnailUpload;
     Button cancelButton,addButton;
     ProgressBar progressBar;
-    EditText product_title, product_description;
+    EditText product_title, product_description,product_price;
     ProductViewModel productViewModel;
     int thumbnailId;
 
@@ -76,7 +76,7 @@ public class AddProductActivity extends AppCompatActivity {
             showFileChoser();
         });
         addButton.setOnClickListener(view -> {
-            productViewModel.postProduct(String.valueOf(thumbnailId),product_title.getText().toString(),product_description.getText().toString()).observe(this, new Observer<ProductPostResponse>() {
+            productViewModel.postProduct(String.valueOf(thumbnailId),product_title.getText().toString(),product_description.getText().toString(), product_price.getText().toString()).observe(this, new Observer<ProductPostResponse>() {
                 @Override
                 public void onChanged(ProductPostResponse productPostResponse) {
                     Toast.makeText(AddProductActivity.this, "Post SuccessFully", Toast.LENGTH_SHORT).show();
@@ -133,6 +133,7 @@ public class AddProductActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.upload_progressBar);
         product_title = findViewById(R.id.et_update_ttile);
         product_description = findViewById(R.id.product_descriptions);
+        product_price = findViewById(R.id.et_price);
     }
 
     private void setProgressBarInvisible() {

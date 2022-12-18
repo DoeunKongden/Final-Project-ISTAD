@@ -113,16 +113,11 @@ public class SearchFragment extends Fragment implements SearchProductClickedList
 
 
     @Override
-    public void onSearhProductClick(ProductAttributes productAttributes) {
+    public void onSearhProductClick(ProductAttributes productAttributes,int id) {
         Intent intent =  new Intent(getContext(), ProductDetailActivity.class);
         intent.putExtra("productAttributes",productAttributes);
+        intent.putExtra("productId" , id);
         startActivity(intent);
     }
 
-    @Override
-    public void onItemClick(ProductData productData) {
-        Intent intent = new Intent(getContext(),ProductDetailActivity.class);
-        intent.putExtra("productId" , productData);
-        startActivity(intent);
-    }
 }

@@ -37,6 +37,26 @@ public class ProductRepository {
         productService = ServiceGenerator.createService(ProductService.class);
     }
 
+    //Updating Product
+    public MutableLiveData<ProductPostResponse> updateProduct(int productId,ProductRequest productRequest){
+        MutableLiveData<ProductPostResponse> updateResponse = new MutableLiveData<>();
+
+        productService.updateProduct(productId,productRequest).enqueue(new Callback<ProductPostResponse>() {
+            @Override
+            public void onResponse(Call<ProductPostResponse> call, Response<ProductPostResponse> response) {
+                Log.d("Update", "onResponse Update: " + response);
+                updateResponse.postValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<ProductPostResponse> call, Throwable t) {
+                Log.d("Update Fail", "onFailure: " + t.getMessage());
+                updateResponse.postValue(null);
+            }
+        });
+        return updateResponse;
+    }
+
     //Posting new Product
     public MutableLiveData<ProductPostResponse> postProduct(ProductRequest productRequest){
         MutableLiveData<ProductPostResponse> postProductResponse = new MutableLiveData<>();

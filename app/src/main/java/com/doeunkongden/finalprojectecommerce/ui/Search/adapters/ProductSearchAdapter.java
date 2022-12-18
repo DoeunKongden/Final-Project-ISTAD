@@ -20,6 +20,7 @@ import com.doeunkongden.finalprojectecommerce.R;
 import com.doeunkongden.finalprojectecommerce.data.model.api.ProductAttributes;
 import com.doeunkongden.finalprojectecommerce.data.model.api.response.ProductData;
 import com.doeunkongden.finalprojectecommerce.ui.Search.dialog.DeleteDialog;
+import com.doeunkongden.finalprojectecommerce.ui.detail.ProductDetailActivity;
 import com.doeunkongden.finalprojectecommerce.ui.update.UpdateProductActivity;
 
 import java.util.List;
@@ -28,6 +29,7 @@ public class ProductSearchAdapter extends RecyclerView.Adapter<ProductSearchAdap
 
     //List of All Product
     List<ProductData> productDatalist;
+
     Context context;
 
     //declaring Search Product Click listener interface
@@ -83,7 +85,7 @@ public class ProductSearchAdapter extends RecyclerView.Adapter<ProductSearchAdap
 
             itemView.setOnClickListener(view -> {
                 if(productDatalist.get(getAdapterPosition()).getProductAttributes() != null){
-                    searchProductClickedListener.onSearhProductClick(productDatalist.get(getAdapterPosition()).getProductAttributes());
+                    searchProductClickedListener.onSearhProductClick(productDatalist.get(getAdapterPosition()).getProductAttributes(),productDatalist.get(getAdapterPosition()).getId());
                 }
             });
         }
@@ -91,6 +93,7 @@ public class ProductSearchAdapter extends RecyclerView.Adapter<ProductSearchAdap
         @Override
         public void onClick(View view) {
             ProductData productData = new ProductData();
+            ProductAttributes productAttributes = new ProductAttributes();
             PopupMenu popupMenu = new PopupMenu(view.getContext(),view);
             popupMenu.inflate(R.menu.option_menu);
             Context context = view.getContext();
@@ -99,8 +102,9 @@ public class ProductSearchAdapter extends RecyclerView.Adapter<ProductSearchAdap
                 public boolean onMenuItemClick(MenuItem menuItem) {
                     switch (menuItem.getItemId()) {
                         case R.id.update_product:
-                            Intent intent = new Intent(view.getContext(), UpdateProductActivity.class);
+                            Intent intent = new Intent(view.getContext(), ProductDetailActivity.class);
                             intent.putExtra("productId" , productData);
+                            intent.putExtra("productAttributes1",productAttributes);
                             context.startActivity(intent);
                             break;
                         case R.id.delete_product:

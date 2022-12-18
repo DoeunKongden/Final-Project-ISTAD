@@ -31,8 +31,26 @@ public class ProductViewModel extends ViewModel {
         productRepository = new ProductRepository("only init service");
     }
 
+    //updating product
+    public MutableLiveData<ProductPostResponse> updateProduct(int productId , String product_title , String product_price, String product_description, String imageId){
+        ProductRequest productRequest = new ProductRequest();
+        ProductRequestData productRequestData = new ProductRequestData();
+
+        productRequestData.setTitle(product_title);
+        productRequestData.setRating("3.8");
+        productRequestData.setDescription(product_description);
+        productRequestData.setQuantity("20");
+        productRequestData.setCategory("1");
+        productRequestData.setThumbnail(imageId);
+        productRequestData.setPrice(product_price);
+
+        productRequest.setProductRequestData(productRequestData);
+
+        return productRepository.updateProduct(productId,productRequest);
+    }
+
     //Posting New Product
-    public MutableLiveData<ProductPostResponse> postProduct(String imageId, String product_title, String product_description){
+    public MutableLiveData<ProductPostResponse> postProduct(String imageId, String product_title, String product_description,String product_price){
 
         ProductRequest productRequest = new ProductRequest();
         ProductRequestData productRequestData = new ProductRequestData();
@@ -43,7 +61,7 @@ public class ProductViewModel extends ViewModel {
         productRequestData.setQuantity("20");
         productRequestData.setCategory("1");
         productRequestData.setThumbnail(imageId);
-        productRequestData.setPrice("100");
+        productRequestData.setPrice(product_price);
 
         productRequest.setProductRequestData(productRequestData);
 

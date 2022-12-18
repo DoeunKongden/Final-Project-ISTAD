@@ -11,6 +11,7 @@ import java.util.List;
 import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -41,5 +42,10 @@ public interface ProductService {
 
     //Update Product
     @PUT("e-commerce-products/{id}")
-    Call<ProductData> updateProduct(@Path("id") int id);
+    Call<ProductPostResponse> updateProduct(@Path("id") int id , @Body ProductRequest productRequest);
+
+
+    //Deleting user
+    @DELETE("e-commerce-products/{id}")
+    Call<ProductPostResponse> deleteProduct(@Path("id") int id);
 }
