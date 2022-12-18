@@ -13,15 +13,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.doeunkongden.finalprojectecommerce.R;
+import com.doeunkongden.finalprojectecommerce.data.model.api.ProductAttributes;
 import com.doeunkongden.finalprojectecommerce.data.model.api.response.ProductResponse;
 import com.doeunkongden.finalprojectecommerce.ui.AddProduct.AddProductActivity;
 import com.doeunkongden.finalprojectecommerce.ui.Home.adapters.ProductHomeAdapter;
+import com.doeunkongden.finalprojectecommerce.ui.Home.adapters.ProductHomeOnClickListener;
+import com.doeunkongden.finalprojectecommerce.ui.HomeDetail.HomeDetail;
 import com.doeunkongden.finalprojectecommerce.ui.ViewModel.ProductViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements ProductHomeOnClickListener {
 
     FloatingActionButton addButton;
     RecyclerView parent_RecyclerView,rv_2;
@@ -60,7 +63,7 @@ public class HomeFragment extends Fragment {
     private void initView(View view) {
         addButton = view.findViewById(R.id.floatingActionAddButton);
         parent_RecyclerView = view.findViewById(R.id.rv_1);
-        productHomeAdapter = new ProductHomeAdapter(new ArrayList<>());
+        productHomeAdapter = new ProductHomeAdapter(new ArrayList<>(),this);
         parent_RecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(),LinearLayoutManager.HORIZONTAL,false));
         parent_RecyclerView.setAdapter(productHomeAdapter);
 
@@ -70,4 +73,10 @@ public class HomeFragment extends Fragment {
 
     }
 
+    @Override
+    public void onProductItemClicked(ProductAttributes productAttributes) {
+        Intent intent = new Intent(getContext(), HomeDetail.class);
+        intent.putExtra("productHomeAttributes",productAttributes);
+        startActivity(intent);
+    }
 }

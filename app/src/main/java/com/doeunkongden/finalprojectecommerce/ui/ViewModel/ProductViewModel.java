@@ -31,6 +31,11 @@ public class ProductViewModel extends ViewModel {
         productRepository = new ProductRepository("only init service");
     }
 
+    //Deleting product
+    public MutableLiveData<ProductPostResponse> deleteProduct(int productId){
+        return productRepository.deleteProduct(productId);
+    }
+
     //updating product
     public MutableLiveData<ProductPostResponse> updateProduct(int productId , String product_title , String product_price, String product_description, String imageId){
         ProductRequest productRequest = new ProductRequest();

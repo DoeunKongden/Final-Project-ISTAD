@@ -28,6 +28,7 @@ public class ProductRepository {
 
     private MutableLiveData<ProductResponse> productResponseMutableLiveData;
 
+    //Repository
     public ProductRepository(){
         productResponseMutableLiveData = new MutableLiveData<>();
         productService = ServiceGenerator.createService(ProductService.class);
@@ -35,6 +36,26 @@ public class ProductRepository {
 
     public ProductRepository(String service){
         productService = ServiceGenerator.createService(ProductService.class);
+    }
+
+    //Deleting Product
+    public MutableLiveData<ProductPostResponse> deleteProduct(int productId){
+        MutableLiveData<ProductPostResponse> deleteResponse = new MutableLiveData<>();
+
+        productService.deleteProduct(productId).enqueue(new Callback<ProductPostResponse>() {
+            @Override
+            public void onResponse(Call<ProductPostResponse> call, Response<ProductPostResponse> response) {
+                Log.d("delete", "onResponse: delete " + response.body());
+                deleteResponse.postValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<ProductPostResponse> call, Throwable t) {
+                Log.d("delete", "onFailure: delete " + t.getMessage());
+                deleteResponse.postValue(null);
+            }
+        });
+        return deleteResponse;
     }
 
     //Updating Product
@@ -105,6 +126,7 @@ public class ProductRepository {
         return thumbnailLiveData;
     }
 
+    //Fetch All Product
     public void getAllProduct(){
         productService.getAllProduct().enqueue(new Callback<ProductResponse>() {
             @Override
@@ -119,6 +141,7 @@ public class ProductRepository {
         });
     }
 
+    //Fetch Product By Title
     public void getAllProductByTitle(String productTitle){
         productService.getAllProductByTitle(productTitle).enqueue(new Callback<ProductResponse>() {
             @Override
@@ -133,6 +156,7 @@ public class ProductRepository {
         });
     }
 
+    //Live Data Of Product
     public MutableLiveData<ProductResponse> getProductResponseMutableLiveData() {
         return productResponseMutableLiveData;
     }

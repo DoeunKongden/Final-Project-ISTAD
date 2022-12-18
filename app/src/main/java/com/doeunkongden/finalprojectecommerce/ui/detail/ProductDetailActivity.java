@@ -26,9 +26,7 @@ import com.doeunkongden.finalprojectecommerce.MainActivity;
 import com.doeunkongden.finalprojectecommerce.R;
 import com.doeunkongden.finalprojectecommerce.data.model.api.ProductAttributes;
 import com.doeunkongden.finalprojectecommerce.data.model.api.ThumbnailAttributes;
-import com.doeunkongden.finalprojectecommerce.data.model.api.response.ProductData;
 import com.doeunkongden.finalprojectecommerce.data.model.api.response.ProductPostResponse;
-import com.doeunkongden.finalprojectecommerce.ui.AddProduct.AddProductActivity;
 import com.doeunkongden.finalprojectecommerce.ui.Cart.CartFragment;
 import com.doeunkongden.finalprojectecommerce.ui.ViewModel.ProductViewModel;
 import com.doeunkongden.finalprojectecommerce.utils.FilePath;
@@ -37,7 +35,7 @@ import java.io.File;
 import java.util.List;
 
 public class ProductDetailActivity extends AppCompatActivity {
-    ImageView go_back,product_detail_image,cart_button;
+    ImageView go_back,product_detail_image,delete_button;
     EditText product_detail_title,product_detail_price,product_detail_descriptions;
     Button update_button;
     ProductViewModel productViewModel;
@@ -58,7 +56,8 @@ public class ProductDetailActivity extends AppCompatActivity {
         productViewModel.initRepo();
 
         initView();
-        initEvent1(productAttributes, productId);
+        initEventUpdate(productAttributes, productId);
+        initEventDelete(productId);
 
         setProgressBarInvisible();
 
@@ -66,7 +65,20 @@ public class ProductDetailActivity extends AppCompatActivity {
         requestPermission();
     }
 
-    private void initEvent1(ProductAttributes productAttributes , int productId){
+    //deleting product event
+    private void initEventDelete(int productId){
+        delete_button.setOnClickListener(view -> {
+            productViewModel.deleteProduct(productId).observe(this, new Observer<ProductPostResponse>() {
+                @Override
+                public void onChanged(ProductPostResponse productPostResponse) {
+                    Toast.makeText(ProductDetailActivity.this, "Delete Successfully", Toast.LENGTH_SHORT).show();
+                    Log.d("Delete", "onChanged: " + productPostResponse.toString());
+                }
+            });
+        });
+    }
+
+    private void initEventUpdate(ProductAttributes productAttributes , int productId){
         update_button.setOnClickListener(view -> {
             productViewModel.updateProduct(productId,product_detail_title.getText().toString(),product_detail_price.getText().toString(),product_detail_descriptions.getText().toString(),String.valueOf(thumbnailId))
                     .observe(this, new Observer<ProductPostResponse>() {
@@ -88,11 +100,10 @@ public class ProductDetailActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        cart_button.setOnClickListener(view -> {
-            Intent intent = new Intent(this, CartFragment.class);
-            startActivity(intent);
-        });
-
+//        delete_button.setOnClickListener(view -> {
+//            Intent intent = new Intent(this, CartFragment.class);
+//            startActivity(intent);
+//        });
 
         //For Attributes from Item Click listener
         product_detail_title.setText(productAttributes.getTitle());
@@ -106,17 +117,18 @@ public class ProductDetailActivity extends AppCompatActivity {
                 }
             }
         }
+
     }
 
     private void initView(){
         go_back = findViewById(R.id.goBackButton);
         product_detail_image = findViewById(R.id.product_detail_image);
-        cart_button = findViewById(R.id.delete_button);
         product_detail_descriptions = findViewById(R.id.product_detail_description);
         product_detail_title = findViewById(R.id.product_detail_title);
         product_detail_price = findViewById(R.id.product_detail_price);
         update_button = findViewById(R.id.update_button);
         progressBarDetail = findViewById(R.id.progressBar_Detail);
+        delete_button = findViewById(R.id.delete_button);
 
     }
 

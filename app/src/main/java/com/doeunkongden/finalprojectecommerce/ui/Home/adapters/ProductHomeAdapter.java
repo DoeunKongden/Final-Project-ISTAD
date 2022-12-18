@@ -24,8 +24,11 @@ public class ProductHomeAdapter extends RecyclerView.Adapter<ProductHomeAdapter.
     List<ProductData> productDatalist;
     Context context;
 
-    public ProductHomeAdapter(List<ProductData> productDatalist) {
+    public ProductHomeOnClickListener productHomeOnClickListener;
+
+    public ProductHomeAdapter(List<ProductData> productDatalist, ProductHomeOnClickListener productHomeOnClickListener) {
         this.productDatalist = productDatalist;
+        this.productHomeOnClickListener = productHomeOnClickListener;
     }
 
     public void setProductDatalist(List<ProductData> productDatalist) {
@@ -70,6 +73,12 @@ public class ProductHomeAdapter extends RecyclerView.Adapter<ProductHomeAdapter.
             tv_price = itemView.findViewById(R.id.product_price);
             tv_title = itemView.findViewById(R.id.et_update_ttile);
             iv_product_image = itemView.findViewById(R.id.product_image);
+
+            itemView.setOnClickListener(view -> {
+                if(productDatalist.get(getAdapterPosition()).getProductAttributes() != null){
+                    productHomeOnClickListener.onProductItemClicked(productDatalist.get(getAdapterPosition()).getProductAttributes());
+                }
+            });
         }
     }
 }

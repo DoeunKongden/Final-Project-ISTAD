@@ -9,10 +9,6 @@ public class ProductPostResponse {
     @SerializedName("data")
     ProductData productData;
 
-    public ProductPostResponse(ProductData productData) {
-        this.productData = productData;
-    }
-
     public ProductData getProductData() {
         return productData;
     }

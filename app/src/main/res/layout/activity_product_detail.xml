@@ -27,8 +27,8 @@
 
     <ImageView
         android:id="@+id/product_detail_image"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:src="@drawable/hoodies1"
         app:layout_constraintBottom_toTopOf="@+id/product_detail_title"
         app:layout_constraintEnd_toEndOf="parent"
